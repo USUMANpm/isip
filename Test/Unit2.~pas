@@ -1,0 +1,45 @@
+unit Unit2;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, ExtCtrls, Menus, ComCtrls, IniFiles;
+
+type
+
+  TForm2 = class(TForm)
+    Label1: TLabel;
+    ListBox1: TListBox;
+    procedure ListBox1Click(Sender: TObject);
+
+  private
+    { Private declarations }
+
+  public
+    { Public declarations }
+  end;
+
+var
+  Form2: TForm2;
+
+implementation
+
+uses Types, Unit1;
+
+{$R *.dfm}
+
+procedure TForm2.ListBox1Click(Sender: TObject);
+var
+  ini: TIniFile;
+
+  begin
+    ini := TIniFile.Create('lala.ini');
+    try
+  ini.ReadSections(ListBox1.Items);
+  finally
+  ini.Free;
+  end;
+  end;
+end.
+
